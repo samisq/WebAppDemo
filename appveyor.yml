@@ -9,7 +9,7 @@ build_script:
   - dotnet --info
   - dotnet publish -o ./publish WebAppWithDocker.sln
   - docker info
-  - docker build -t samisq/test-ci .
+  - docker build -t samisq/test-ci:%APPVEYOR_BUILD_NUMBER% .
 deploy_script:
-  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+  - docker login -u="%DOCKER_USER%" -p="%$env:DOCKER_PASS%"
   - docker push samisq/test-ci
