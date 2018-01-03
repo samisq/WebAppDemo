@@ -8,7 +8,7 @@ environment:
 build_script:
   - dotnet publish -o ./publish WebAppWithDocker.sln
   - docker info
-  - docker build -t samisq/test-ci-"$env:APPVEYOR_BUILD_VERSION" .
+  - docker build -t samisq/test-ci-$env:APPVEYOR_BUILD_VERSION .
 deploy_script:
   - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
   - docker push samisq/test-ci-"$env:APPVEYOR_BUILD_VERSION"
