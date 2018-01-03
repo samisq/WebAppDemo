@@ -11,5 +11,6 @@ build_script:
   - docker info
   - docker build -t samisq/test-ci:%APPVEYOR_BUILD_NUMBER% .
 deploy_script:
-  - docker login -u="%DOCKER_USER%" -p="%$env:DOCKER_PASS%"
+  - echo "%DOCKER_USER%"
+  - docker login -u="%DOCKER_USER%" -p="%DOCKER_PASS%"
   - docker push samisq/test-ci
