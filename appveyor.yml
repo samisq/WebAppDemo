@@ -3,7 +3,7 @@ image: Visual Studio 2017
 environment:
   DOCKER_USER:
     secure: +T9MYtYwml5+Jnd8UXjbcw==
-  DOCKER_PWD:
+  DOCKER_PASS:
     secure: dLAC65xtVk0CENk9iiIz4A==
 build_script:
   - dotnet --info
