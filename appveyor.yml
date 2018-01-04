@@ -1,14 +1,17 @@
 version: 1.0.{build}
 image: Visual Studio 2017
+init:
+- cmd: dotnet --info
+- cmd: systeminfo
+- docker info
+- ps: Get-CimInstance -ClassName Win32_OperatingSystem
 environment:
   DOCKER_USER:
     secure: +T9MYtYwml5+Jnd8UXjbcw==
   DOCKER_PASS:
     secure: dLAC65xtVk0CENk9iiIz4A==
 build_script:
-  - dotnet --info
   - dotnet publish -o ./publish WebAppWithDocker.sln
-  - docker info
   - docker build -t samisq/test-ci:%APPVEYOR_BUILD_NUMBER% .
 deploy_script:
   - echo "%DOCKER_USER%"
