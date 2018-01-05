@@ -2,9 +2,12 @@ version: 1.0.{build}
 image: Visual Studio 2017
 init:
 - cmd: dotnet --info
+- cmd: ver
 - cmd: systeminfo
 - docker info
 - ps: Get-CimInstance -ClassName Win32_OperatingSystem
+- ps: [Environment]::SetEnvironmentVariable("LCOW_SUPPORTED", "1", "Machine")
+- ps: Restart-Service Docker
 environment:
   DOCKER_USER:
     secure: +T9MYtYwml5+Jnd8UXjbcw==
