@@ -6,13 +6,13 @@ init:
 - cmd: systeminfo
 - docker info
 - ps: Get-CimInstance -ClassName Win32_OperatingSystem
-- ps: .\setuphost.ps1
 environment:
   DOCKER_USER:
     secure: +T9MYtYwml5+Jnd8UXjbcw==
   DOCKER_PASS:
     secure: dLAC65xtVk0CENk9iiIz4A==
 build_script:
+  - ps: .\setuphost.ps1
   - dotnet publish -o ./publish WebAppWithDocker.sln
   - docker build -t samisq/test-ci:%APPVEYOR_BUILD_NUMBER% .
 deploy_script:
