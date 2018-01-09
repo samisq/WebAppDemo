@@ -1,5 +1,5 @@
 version: 1.0.{build}
-image: Windows Server 1709
+image: Visual Studio 2017
 init:
 - appveyor version
 - ps: Get-ComputerInfo
